@@ -1,2 +1,2 @@
-# TODO
-TODO From DB(MySQL)
+# TODO List Application in Spring Boot
+Using JPA
