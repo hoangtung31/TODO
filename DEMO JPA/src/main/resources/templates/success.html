@@ -11,9 +11,9 @@
 </head>
 <body>
 <h1>To-do</h1>
-<h1>Thêm thành công!</h1>
+<h1 style="color: green"th:text="#{todo.message.success}"></h1>
 
-<a th:href="@{/listTodo}" class="btn btn-primary">Xem danh sách công việc</a>
+<a th:href="@{/listTodo}" class="btn btn-primary" th:text="#{todo.value.listTodo}"></a>
 
 </body>
 
