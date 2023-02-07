@@ -19,6 +19,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.projectlombok:lombok:1.18.24")
     implementation("mysql:mysql-connector-java")
+    implementation("org.jsoup:jsoup:1.15.3")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor ("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
