@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
-  <title>Loda To-do</title>
+  <title>TungHD To-do</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
   <!--css-->
@@ -18,9 +18,9 @@
 
 <ul>
   <!--Duyệt qua toàn bộ phần tử trong biến "todoList"-->
-  <li th:each="expense : ${expenseList}">
+  <li th:each="todo : ${todoList}">
     <!--Với mỗi phần tử, lấy ra title và detail-->
-    <span th:text="*{expense.getItem()}"></span> : <span th:text="*{expense.getAmount()}"></span>
+    <span th:text="*{todo.getTitle()}"></span> : <span th:text="*{todo.getDetail()}"></span>
   </li>
 </ul>
 
