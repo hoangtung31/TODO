@@ -18,34 +18,27 @@ public class DemoJpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("=================================");
-//        WebCrawler crawler = new WebCrawler();
-//        String rootURL = "https://www.coingecko.com/en/all-cryptocurrencies";
-//        crawler.crawl(rootURL, 1000);
-        Document doc = Jsoup.connect("https://xosoketqua.com").get();
+        Document doc = Jsoup.connect("https://xosoketqua.com/xsmb-xo-so-mien-bac.html").get();
         String title = doc.title();
         System.out.println("Website's name " + title);
-        System.out.println("=================================");
-        Element content = doc.getElementById("kqngay_07022023");
-        Elements hori = content.getElementsByClass("div-horizontal");
-        for (Element hor: hori) {
-//            if(hori.attr("class").equals("special-prize-lg")) {
+        Elements mainContents = doc.getElementsByClass("block-main-content");
+        for (Element mainContent: mainContents) {
             System.out.println("=================================");
-                System.out.println(hori.text());
-//            }
+            Elements trs = mainContent.getElementsByTag("tr");
+            for (Element tr: trs) {
+                Elements tds = tr.getElementsByTag("td");
+                if (tds.stream().count() == 2) {
+                    Element prize = tds.first();
+                    if (prize.text().contains("G")) {
+                        System.out.println("----" + prize.text() + "----");
+                        Elements spans = tds.last().getElementsByTag("span");
+                        for (Element span: spans ) {
+                            System.out.print(span.text() + " ");
+                        }
+                        System.out.println("");
+                    }
+                }
+            }
         }
-        System.out.println(hori);
-//        Elements trs = content.getElementsByTag("tr");
-//        for (Element tr : trs) {
-//            System.out.println(tr);
-//        }
-//        Document doc = Jsoup.connect("https://www.coingecko.com/en/all-cryptocurrencies")
-//                .data("store_type","3", "sort" , "distance")
-//                .userAgent("Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2")
-//                .method(Connection.Method.POST)
-//                .timeout(0).ignoreHttpErrors(true)
-//                .get();
-//        String title = doc.title();
-//        System.out.println("Website's name " + title);
     }
 }
