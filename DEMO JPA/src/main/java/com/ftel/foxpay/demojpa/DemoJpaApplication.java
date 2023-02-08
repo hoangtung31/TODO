@@ -1,7 +1,4 @@
 package com.ftel.foxpay.demojpa;
-
-import com.ftel.foxpay.demojpa.model.WebCrawler;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoJpaApplication implements CommandLineRunner {
     public static void main(String[] args) {
+
         SpringApplication.run(DemoJpaApplication.class, args);
     }
 
@@ -21,6 +19,7 @@ public class DemoJpaApplication implements CommandLineRunner {
         Document doc = Jsoup.connect("https://xosoketqua.com/xsmb-xo-so-mien-bac.html").get();
         String title = doc.title();
         System.out.println("Website's name " + title);
+        /*
         Elements mainContents = doc.getElementsByClass("block-main-content");
         for (Element mainContent: mainContents) {
             System.out.println("=================================");
@@ -40,5 +39,21 @@ public class DemoJpaApplication implements CommandLineRunner {
                 }
             }
         }
+        */
+        Elements resultBlocks = doc.select("div.block");
+        //System.out.println(resultBlocks);
+        for (Element block: resultBlocks) {
+            Elements listLink = block.select("div.list-link > h2 > a");
+            for (Element link: listLink) {
+                System.out.println(link.text());
+            }
+
+//            Elements tablePrize = block.select("table.table-xsmb > tbody > tr");
+//            System.out.println(tablePrize);
+        }
+    }
+
+    private void crawlData() {
+
     }
 }
