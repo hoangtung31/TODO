@@ -41,15 +41,28 @@ public class DemoJpaApplication implements CommandLineRunner {
         }
         */
         Elements resultBlocks = doc.select("div.block");
-        //System.out.println(resultBlocks);
         for (Element block: resultBlocks) {
-            Elements listLink = block.select("div.list-link > h2 > a");
-            for (Element link: listLink) {
+            System.out.println("=============================================");
+            Element link = block.select("div.list-link > h2 > a").last();
+            Elements trs = block.select("div.block-main-content > table.table-xsmb > tbody > tr");
+            if (link != null) {
                 System.out.println(link.text());
+                System.out.println("=============================================");
+                for (Element tr: trs) {
+                    Elements tds = tr.getElementsByTag("td");
+                    if (tds.stream().count() == 2) {
+                        Element prize = tds.first();
+                        if (prize.text().contains("G")) {
+                            System.out.print(prize.text() + ": ");
+                            Elements spans = tds.last().getElementsByTag("span");
+                            for (Element span: spans ) {
+                                System.out.print(span.text() + " ");
+                            }
+                            System.out.println("");
+                        }
+                    }
+                }
             }
-
-//            Elements tablePrize = block.select("table.table-xsmb > tbody > tr");
-//            System.out.println(tablePrize);
         }
     }
 
