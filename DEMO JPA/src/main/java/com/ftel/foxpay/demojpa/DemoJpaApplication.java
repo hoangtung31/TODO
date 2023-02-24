@@ -101,7 +101,7 @@ public class DemoJpaApplication implements CommandLineRunner {
                     }
                 }
 
-                luckyNumberService.addLuckyNumber(ln);
+                //luckyNumberService.addLuckyNumber(ln);
             }
         }
     }
